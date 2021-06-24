@@ -1,0 +1,24 @@
+{
+	"name": "modules/monthlyevaluation",
+	"description": "",
+	"type": "library",
+	"version": "1.0",
+	"license": "proprietary",
+	"require": {},
+	"autoload": {
+		"psr-4": {
+			"Modules\\Monthlyevaluation\\": "src/",
+			"Modules\\Monthlyevaluation\\Tests\\": "tests/",
+			"Modules\\Monthlyevaluation\\Database\\Factories\\": "database/factories/",
+			"Modules\\Monthlyevaluation\\Database\\Seeders\\": "database/seeders/"
+		}
+	},
+	"minimum-stability": "stable",
+	"extra": {
+		"laravel": {
+			"providers": [
+				"Modules\\Monthlyevaluation\\Providers\\MonthlyevaluationServiceProvider"
+			]
+		}
+	}
+}

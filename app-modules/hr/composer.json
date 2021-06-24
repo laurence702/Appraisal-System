@@ -1,0 +1,24 @@
+{
+	"name": "modules/hr",
+	"description": "",
+	"type": "library",
+	"version": "1.0",
+	"license": "proprietary",
+	"require": {},
+	"autoload": {
+		"psr-4": {
+			"Modules\\Hr\\": "src/",
+			"Modules\\Hr\\Tests\\": "tests/",
+			"Modules\\Hr\\Database\\Factories\\": "database/factories/",
+			"Modules\\Hr\\Database\\Seeders\\": "database/seeders/"
+		}
+	},
+	"minimum-stability": "stable",
+	"extra": {
+		"laravel": {
+			"providers": [
+				"Modules\\Hr\\Providers\\HrServiceProvider"
+			]
+		}
+	}
+}
