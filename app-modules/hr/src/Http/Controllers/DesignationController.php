@@ -21,7 +21,7 @@ class DesignationController extends Controller
 
     public function bulksaveDesignations()
     {
-        $response = Http::get('https://ukdiononline.com/api/alldesignations');
+        $response = Http::get('your-import-url-if-available');
         if($response->successful()){
             $res_body = $response['data'];
             $fn = [];
@@ -90,10 +90,8 @@ class DesignationController extends Controller
             $designation->status = $status;
             $result = $designation->save();
             if($result){
-                
+                return successExecution();
             }
-
-            return redirect('/designations/create');
 
         } catch (ModelNotFoundException $e) {
             
@@ -127,7 +125,7 @@ class DesignationController extends Controller
             return view('admin.designations.edit', $data);
             
         } catch (ModelNotFoundException $e) {
-           return redirect('/designations'); 
+           return failedExecution();
         }
         
     }

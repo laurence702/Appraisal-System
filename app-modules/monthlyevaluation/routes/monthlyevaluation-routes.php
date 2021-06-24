@@ -19,6 +19,6 @@ Route::middleware(['auth:sanctum'])->prefix('api')->group(function () {
 Route::fallback(function(){
     return response()->json([
         'status' => false,
-        'message' => 'Page Not Found. If error persists, contact it@ukdion.com'], 404);
+        'message' => 'Page Not Found. If error persists, contact it@support.com'], 404);
 });
 

@@ -16,34 +16,7 @@ class DepartmentController extends Controller
             'status' => true,
             'data' => $depts
             ]);
-    }
-
-    public function bulksaveDepts()
-    {     
-        $response = Http::get('https://ukdiononline.com/api/alldepts');
-        if($response->successful()){
-            $res_body = $response['data'];
-            $fn = [];
-            foreach ($res_body as $key => $value) {
-               Department::create($value);
-               //creating in a loop
-            }
-            if(count(Department::all()) > 1 ){
-                return response()->json([
-                    'status' => true,
-                    'message'=> "Departments created"
-                ]);
-            }else{
-                return response()->json([
-                    'status' => 'failed',
-                    'message'=> "Operation failed to create"
-                ]);
-            }
-        }else{
-            return "an error occured";
-        }
-    }
-    
+    }   
     
     /**
      * Display a listing of the resource.
@@ -86,17 +59,14 @@ class DepartmentController extends Controller
         $title = $request->input('title');
         $description = $request->input('description');
         $status = $request->input('status');
-
-
         $department = new Department;
         $department->title = $title;
         $department->description = $title;
         $department->status = $status;
         $result = $department->save();
         if($result){
-            $request->session()->flash('msg', __('admin/departments.added'));
+            return successExecution();
         }
-        return redirect('/departments/create');
 
     }
 
@@ -158,7 +128,7 @@ class DepartmentController extends Controller
                 'message' => 'Successful'
             ]);
         }
-        return redirect('/departments/edit/'.$id);
+        return successExecution();
     }
 
     /**
@@ -169,13 +139,10 @@ class DepartmentController extends Controller
      */
     public function destroy(Departments $departments, $id = NULL)
     {
-        if(is_null($id)){ return redirect('admin/departments'); }
-
         $result = $departments->destroy($id);
         if($result){
-            session()->flash('msg', __('admin/departments.remove'));
+            return successExecution();
         }
-
-        return redirect('/departments');
+        return failedExecution();
     }
 }

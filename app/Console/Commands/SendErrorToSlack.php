@@ -40,6 +40,7 @@ class SendErrorToSlack extends Command
      */
     public function handle()
     {
-        Employee::where('email', 'francisigbokwe@ukdioninvestment.com')->first()->notify(new SlackNotifier());
+        //second param is the email address u used to create the slack api app
+        Employee::where('email', 'your-slacl-email-address-here')->first()->notify(new SlackNotifier());
     }
 }
