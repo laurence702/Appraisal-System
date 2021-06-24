@@ -1,8 +1,8 @@
-# UKDION/Erp
+# Staff Monthly Appraisal System
 
 [![PHPUnit](https://github.com/InterNACHI/modular/workflows/PHPUnit/badge.svg)](https://github.com/InterNACHI/modular/actions?query=workflow%3APHPUnit) [![Test Coverage](https://api.codeclimate.com/v1/badges/dd927802d52f4f75ea6c/test_coverage)](https://codeclimate.com/github/InterNACHI/modular/test_coverage)
 
-This `ERP backend` repo uses `InterNACHI/Modular`, a module system for Laravel applications. It uses
+This `Staff Appraisal system` repo uses `InterNACHI/Modular`, a module system for Laravel applications. It uses
 [Composer path repositories](https://getcomposer.org/doc/05-repositories.md#path) for autoloading, 
 and [Laravel package discovery](https://laravel.com/docs/7.x/packages#package-discovery) for module
 initialization, and then provides minimal tooling to fill in any gaps.
@@ -13,13 +13,11 @@ better organize large projects. These modules use the existing
 [Laravel package system](https://laravel.com/docs/7.x/packages), and follow existing Laravel
 conventions.
 
-- [Walkthrough Video](#walkthrough-video)
+## This also uses slack for error reporting, just bring in your own slack channel api and configure
+
 - [Installation](#installation)
 - [Usage](#usage)
 
-## Walkthrough Video
-
-[![Intro video](https://embed-ssl.wistia.com/deliveries/98ebc7e01537a644df2d3af93d928257.jpg?image_crop_resized=1600x900&image_play_button=true&image_play_button_size=2x&image_play_button_color=1e71e7e0)](https://internachi.wistia.com/medias/pivaxithl7?wvideo=pivaxithl7)
 
 ## Installation
 

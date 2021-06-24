@@ -27,4 +27,4 @@
    });
    Route::get('/employees/gofetchfromerp', [EmployeeController::class, 'bulkSaveEmployees'])->name('employees.bulksave');
 
-   Route::get('bubbleSort',[EmployeeController::class, 'bubbleSort']);
+   Route::get('testZeroBounceApi',[EmployeeController::class, 'testZeroBounceApi']);

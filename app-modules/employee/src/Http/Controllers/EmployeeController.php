@@ -51,38 +51,7 @@ class EmployeeController extends Controller
         $emps = Employee::get()->load(['departments','designation']);
         if(count($emps) > 1){
             $fnArray = array();
-                
             foreach($emps as $key => $value){
-               unset($value->gross);
-               unset($value->leaving_date);
-               unset($value->designation_id);
-               unset($value->shift_id);
-               unset($value->employee_type);
-               unset($value->allowed_leave);
-               unset($value->salary_type);
-               unset($value->monthly_reimbursable);
-               unset($value->monthly_salary);
-               unset($value->basic_salary);
-               unset($value->accomodation_allowance);
-               unset($value->percentage_to_achived);
-               unset($value->house_rent_allowance);
-               unset($value->transportation_allowance);
-               unset($value->telephone_allowance);
-               unset($value->leave_allowance);
-               unset($value->others_allowance);
-               unset($value->monthly_target);
-               unset($value->smartsaver_date);
-               unset($value->smartsaver_percentage);
-               unset($value->account_number);
-               unset($value->beneficiary_bank);
-               unset($value->overtime_1);
-               unset($value->overtime_2);
-               unset($value->overtime_3);
-               unset($value->confirmed_by);
-               unset($value->status);
-               unset($value->cover);
-               unset($value->avatar);
-               unset($value->remember_token);
                unset($value->create_by);
                unset($value->updated_by);
                unset($value->date_updated);
@@ -102,12 +71,11 @@ class EmployeeController extends Controller
 
     public function bulkSaveEmployees()
     {
-        $response = Http::get('https://ukdiononline.com/api/allLMSemployees/rw');
+        $response = Http::get('url-to-import-your-old-employees'); //if u wana import your users from external
         if($response->successful()){
             $res_body = $response['data'];
             $fn = [];
             foreach ($res_body as $key => $value) {
-               //Employee::create();
                DB::table('tbl_employees')->insert([$value]);
             }
             if(count(Employee::all()) > 1 ){
@@ -225,9 +193,9 @@ class EmployeeController extends Controller
             'email' => "required|email",
         );
         $validator = Validator::make($input, $rules);
-        if ($validator->fails()) {
+        if ($validator->fails())
             $arr = array("status" => 400, "message" => $validator->errors()->first(), "data" => array());
-        } else {
+        else
             try {
                 $response = Password::sendResetLink($request->only('email'), function (Message $message) {
                     $message->subject($this->getEmailSubject());
@@ -243,22 +211,19 @@ class EmployeeController extends Controller
             } catch (Exception $ex) {
                 $arr = array("status" => 400, "message" => $ex->getMessage(), "data" => []);
             }
-        }
         return \Response::json($arr);
     }
 
-    public function testmail()
+    public function testZeroBounceApi()
     {
         // You can modify the timeout using the second parameter. Default is 15.
         $handler = new ZeroBounce('162eec4d19724118afcd92844c77e005', 30);
 
         $email = new Email(
-            // The email address you want to check
+            // The email address I want to check
             'akaigbokwelaurence@gmail.com', //'123.123.123.123'
         );
-
         try {
-
             // Validate the email
             $result = $handler->validateEmail($email);
             
@@ -354,25 +319,4 @@ class EmployeeController extends Controller
         
     }
 
-    public function bubbleSort()
-    {   
-        $arr = [99,18,1,52,61,2,23,65,44,7,6,34];
-         
-        $length = count($arr);
-        $comparisons = 0;
-        for($i = 0; $i <  $length; $i++) { 
-            for ($j = 0; $j < $length - 1 ; $j++) { 
-                $comparisons++;
-                if($arr[$j] > $arr[$j+1]){
-                    $tmp = $arr[$j + 1];
-                    $arr[$j+1] = $arr[$j];
-                    $arr[$j] = $tmp;
-                }
-            }
-        }
-        echo $comparisons."<br>";
-        return $arr;
-        //echo $sorted= bubbleSort($unsorted_arr)."<br>";
-    
-    }
 }

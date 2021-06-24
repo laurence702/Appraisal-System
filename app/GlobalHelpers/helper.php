@@ -70,6 +70,25 @@ if(!function_exists('successExecution')){
     }
 }
 
+if(!function_exists('bbSort')){
+    function bbSort($arr){
+    $length = count($arr);
+    $comparisons = 0;
+    for($i = 0; $i <  $length; $i++) { 
+        for ($j = 0; $j < $length - 1 ; $j++) { 
+            $comparisons++;
+            if($arr[$j] > $arr[$j+1]){
+                $tmp = $arr[$j + 1];
+                $arr[$j+1] = $arr[$j];
+                $arr[$j] = $tmp;
+            }
+        }
+    }
+    echo $comparisons."<br>";
+    $sortedArr = $arr;
+    return $sortedArr;
+    }
+}
 
 
 
