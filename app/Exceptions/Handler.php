@@ -39,7 +39,7 @@ class Handler extends ExceptionHandler
     public function register()
     {
         $this->reportable(function (Throwable $e) {
-            Employee::where('email', 'work.igbokwelaurence.com')
+            Employee::where('email', 'add-your-email-here.com')
             ->first()->notify(new SlackNotifier($e->getMessage()));
         });
     }

@@ -2,11 +2,16 @@
 
 use Illuminate\Support\Str;
 
-// $url = parse_url(getenv("DATABASE_URL"));
-// $host = !empty($url["host"]) ? $url["host"] : "";
-// $username = !empty($url["user"]) ? $url["user"] : "";
-// $password = !empty($url["pass"]) ? $url["pass"] : "";
-// $database = substr($url["path"], 1);
+/* 
+    //uncomment this section if using heroku postgres as I did
+
+    $url = parse_url(getenv("DATABASE_URL"));
+    $host = !empty($url["host"]) ? $url["host"] : "";
+    $username = !empty($url["user"]) ? $url["user"] : "";
+    $password = !empty($url["pass"]) ? $url["pass"] : "";
+    $database = substr($url["path"], 1);
+*/
+
 
 return [
 

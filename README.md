@@ -19,6 +19,7 @@ conventions.
 - [Usage](#usage)
 
 
+
 ## Installation
 
 To get started after installing your laravel application, run:
@@ -141,3 +142,7 @@ and everything else Laravel provides:
 - `php artisan make:rule MyModuleRule --module=my-module`
 - `php artisan make:seeder MyModuleSeeder --module=my-module`
 - `php artisan make:test MyModuleTest --module=my-module`
+
+## Extras
+- This repo uses spatie permissions for authorisation and access provision, look in the AccessGateController
+- Also uses middleware to make sure only users given permissions can create evaluation or carry out appraisal eg Teamlead, HR, admin etc 

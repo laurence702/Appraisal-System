@@ -41,7 +41,6 @@ class AccessGateController extends Controller
             return array("status" => 400, "message" => $validator->errors()->first(), "data" => array());
         }
         $user = getUserById($request->userId);
-        //return $user->can($request->permission);
         $action = $user->givePermissionTo((string)$request->permission);
         if($action)
             return successExecution();
